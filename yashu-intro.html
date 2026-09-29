@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yashu · Data Science &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070a1a; --ink:#e6f1ff; --mute:#8f9bc0; --line:#22294d; --c1:#5ef2ff; --c2:#ff5ad9; --panel:#0d1230;
+  --display:"Chakra Petch","Arial Narrow",Impact,sans-serif; --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef3ff;--ink:#0d1330;--mute:#525b82;--line:#c6cff0;--c1:#0a7fb0;--c2:#c2179b;--panel:#e0e7fb}}
+:root[data-theme="light"]{--bg:#eef3ff;--ink:#0d1330;--mute:#525b82;--line:#c6cff0;--c1:#0a7fb0;--c2:#c2179b;--panel:#e0e7fb}
+:root[data-theme="dark"]{--bg:#070a1a;--ink:#e6f1ff;--mute:#8f9bc0;--line:#22294d;--c1:#5ef2ff;--c2:#ff5ad9;--panel:#0d1230}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
+.wrap{max-width:66rem;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+section{padding:3.5rem 0}
+h2{font:700 clamp(1.7rem,4vw,2.4rem)/1.1 var(--display);letter-spacing:.01em;margin:0 0 1.75rem;padding-left:1rem;border-left:4px solid var(--c1)}
+
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative;padding-top:4rem;padding-bottom:4rem}
+.live{display:inline-flex;align-items:center;gap:.6rem;color:var(--mute);font-size:.95rem;margin:0 0 1.25rem}
+.live i{width:.6rem;height:.6rem;border-radius:50%;background:var(--c1);box-shadow:0 0 14px var(--c1);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.3}}
+.name{margin:0;font:700 clamp(4.5rem,22vw,15rem)/.9 var(--display);letter-spacing:-.03em;
+  background:linear-gradient(100deg,var(--c1) 0%,var(--ink) 45%,var(--c2) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:sweep 9s ease-in-out infinite alternate,boot 1.1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sweep{to{background-position:100% 0}}
+@keyframes boot{from{clip-path:inset(0 100% 0 0);opacity:.2}to{clip-path:inset(0 0 0 0);opacity:1}}
+.role{max-width:34rem;margin:1.75rem 0 2rem;font-size:1.3rem}
+.hero-links{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border:1.5px solid var(--c1);border-radius:4px;text-decoration:none;font-weight:600;transition:background .2s,color .2s,box-shadow .2s}
+.btn:hover{background:var(--c1);color:var(--bg);box-shadow:0 0 24px var(--c1)}
+.btn.alt{border-color:var(--line)}
+.btn.alt:hover{border-color:var(--c2);background:var(--c2);box-shadow:0 0 24px var(--c2);color:var(--bg)}
+
+/* about */
+.about p{max-width:42rem;margin:0 0 1rem;font-size:1.15rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem 2.5rem;margin-top:2rem}
+.grid div{border-top:1px solid var(--line);padding-top:1rem}
+.grid b{display:block;font:600 1.15rem/1.3 var(--display);margin-bottom:.25rem}
+.grid span{color:var(--mute)}
+
+/* work list */
+.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.rows>li{padding:1.75rem .25rem;border-bottom:1px solid var(--line)}
+.rows h3{margin:0;font:700 clamp(1.3rem,3vw,1.7rem)/1.25 var(--display)}
+.stack{margin:.25rem 0 .75rem;color:var(--c1);font-weight:600;font-size:.95rem}
+.rows p{margin:0 0 .5rem;max-width:44rem;color:var(--mute)}
+.rows p strong{color:var(--ink);font-weight:600}
+
+/* timeline */
+.tl{border-left:2px solid var(--line);padding-left:1.5rem;position:relative}
+.tl::before{content:"";position:absolute;left:-6px;top:.5rem;width:10px;height:10px;border-radius:50%;background:var(--c2);box-shadow:0 0 14px var(--c2)}
+.tl small{display:block;color:var(--c2);font-weight:600}
+.tl h3{margin:.1rem 0 .75rem;font:700 1.35rem/1.3 var(--display)}
+.tl ul{margin:0;padding-left:1.1rem;max-width:44rem;color:var(--mute)}
+.tl li{margin-bottom:.6rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:.9rem 1.5rem;margin:0}
+.skills dt{font:600 1.05rem var(--display);color:var(--mute)}
+.skills dd{margin:0}
+.skills dd span{display:inline-block;margin:0 .4rem .4rem 0;padding:.25rem .8rem;border:1px solid var(--line);border-radius:4px;background:var(--panel)}
+
+/* certs + edu */
+.cert{list-style:none;margin:0;padding:0}
+.cert li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.1rem 1.5rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.cert b{font-weight:600}
+.cert span{color:var(--mute)}
+.cert time{color:var(--c1);font-weight:600;grid-row:1/3;grid-column:2;align-self:center}
+.edu{margin-top:2.5rem}
+.edu h3{margin:0;font:700 1.3rem/1.3 var(--display)}
+.edu p{margin:.15rem 0 0;color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:3rem 0}
+footer p{margin:0 0 1.25rem;font-size:1.2rem}
+@media (prefers-reduced-motion:reduce){.name{animation:none}.live i{animation:none}}
+@media (max-width:640px){.skills{grid-template-columns:1fr;gap:.25rem}.skills dd{margin-bottom:.75rem}.cert li{grid-template-columns:1fr}.cert time{grid-row:auto;grid-column:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="live"><i></i>Data Science Training at Qspyder, since June 2026</p>
+    <h1 class="name">Yashu</h1>
+    <p class="role">I turn messy data into clear answers: analysis, machine learning and Gen AI, built in Python and SQL.</p>
+    <div class="hero-links">
+      <a class="btn" href="https://github.com/wraithhitek?tab=repositories">See my code</a>
+      <a class="btn alt" href="mailto:itisyashu@gmail.com">Email me</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2>Who I am</h2>
+      <p>I'm a Computer Science &amp; Engineering student at Jagannath University, graduating in 2027. I like problems where the answer is hiding in a big dataset, whether that's spotting fraud, ranking polluted cities, or shrinking a manual report.</p>
+      <p>I'm also into generative AI: I'm Oracle-certified in it, went through Google's multimodal AI program, and built a summarizer on the Gemini API.</p>
+      <div class="grid">
+        <div><b>Data analysis</b><span>Python, Pandas, NumPy and SQL to clean, aggregate and explain data.</span></div>
+        <div><b>Machine learning</b><span>Classification on imbalanced data with Scikit-learn.</span></div>
+        <div><b>Generative AI</b><span>Gemini, RAG and Vertex AI.</span></div>
+        <div><b>Dashboards</b><span>Power BI and dashboards that make trends easy to read.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <ul class="rows">
+        <li>
+          <h3>Credit Card Fraud Detection &amp; Analysis</h3>
+          <div class="stack">Python · Scikit-learn · Pandas</div>
+          <p>Analyzed 284,000+ credit card transactions where only 0.17% were fraud, and used SMOTE to handle the imbalance.</p>
+          <p>A Random Forest reached <strong>80.6% recall and 0.969 ROC-AUC</strong>, beating a Logistic Regression baseline on precision (81.4% vs 5.8%).</p>
+        </li>
+        <li>
+          <h3>AI Content Summarizer</h3>
+          <div class="stack">Python · Google Gemini API · FastAPI</div>
+          <p>A pipeline that condenses long articles and blog posts into short summaries, with configurable token limits and temperature for different content types.</p>
+          <p>Handles rate limits, authentication failures and invalid input without crashing.</p>
+        </li>
+        <li>
+          <h3>AQI Data Analysis Dashboard</h3>
+          <div class="stack">Power BI · Python (Pandas) · Excel/SQL</div>
+          <p>Dashboard on air quality and pollutant levels (PM2.5, NO, SO2, CO) across major Indian cities, 2015–2020.</p>
+          <p>Ranks cities and hotspots: <strong>Delhi, Patna and Amritsar</strong> came out as the most polluted.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="training">
+    <div class="wrap">
+      <h2>Training</h2>
+      <div class="tl">
+        <small>June 2026 – Present</small>
+        <h3>Data Science Training, Qspyder Gurugram</h3>
+        <ul>
+          <li>Analyzed an online retail dataset of 541,000+ transactions across 38 countries with Pandas and NumPy, cleaning raw sales data to find purchase trends for business reporting.</li>
+          <li>Wrote SQL to aggregate order and product data from a Blinkit grocery dataset of about 100,000 orders, and built an interactive dashboard covering 5 major cities that cut manual reporting effort by about 40%.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Toolkit</h2>
+      <dl class="skills">
+        <dt>Languages</dt><dd><span>C</span><span>Python</span><span>SQL</span></dd>
+        <dt>Libraries</dt><dd><span>pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span><span>Scikit-learn</span></dd>
+        <dt>Tools</dt><dd><span>GitHub</span><span>Power BI</span><span>Google Cloud Platform</span><span>AWS</span><span>VS Code</span></dd>
+        <dt>Soft skills</dt><dd><span>Communication</span><span>Problem solving</span><span>Self-learning</span><span>Presentation</span><span>Adaptability</span><span>Team player</span></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="wrap">
+      <h2>Certifications &amp; education</h2>
+      <ul class="cert">
+        <li><b>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</b><span>Oracle</span><time>Oct 2025</time></li>
+        <li><b>Gen AI Academy: Multimodal AI with Gemini, RAG &amp; Vertex AI</b><span>Google Cloud x Hack2skill</span><time>Dec 2025</time></li>
+        <li><b>Perplexity Campus Partner</b><span>Perplexity</span><time>Aug – Dec 2025</time></li>
+      </ul>
+      <div class="edu">
+        <h3>B.Tech, Computer Science &amp; Engineering</h3>
+        <p>Jagannath University, Bahadurgarh, Haryana · Aug 2023 – Jun 2027</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Want to work together? Say hello.</p>
+    <div class="hero-links">
+      <a class="btn" href="mailto:itisyashu@gmail.com">itisyashu@gmail.com</a>
+      <a class="btn alt" href="https://linkedin.com/in/cpentyashu">LinkedIn</a>
+      <a class="btn alt" href="https://github.com/wraithhitek">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var cv=document.getElementById('net'),ctx=cv.getContext('2d'),hero=cv.parentNode;
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W,H,pts=[],mx=-999,my=-999,c1,c2,dpr=Math.min(window.devicePixelRatio||1,2);
+  function colors(){var s=getComputedStyle(document.documentElement);c1=s.getPropertyValue('--c1').trim()||'#5ef2ff';c2=s.getPropertyValue('--c2').trim()||'#ff5ad9'}
+  function size(){
+    W=hero.clientWidth;H=hero.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.round(Math.min(90,W*H/14000));pts=[];
+    for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});
+  }
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      if(!still){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
+      for(var j=i+1;j<pts.length;j++){
+        var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=dx*dx+dy*dy;
+        if(d<14400){ctx.globalAlpha=(1-d/14400)*.35;ctx.strokeStyle=c1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}
+      }
+      var ex=p.x-mx,ey=p.y-my,ed=ex*ex+ey*ey;
+      if(ed<32400){ctx.globalAlpha=(1-ed/32400)*.9;ctx.strokeStyle=c2;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mx,my);ctx.stroke()}
+      ctx.globalAlpha=.85;ctx.fillStyle=c1;ctx.beginPath();ctx.arc(p.x,p.y,1.8,0,6.283);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    if(!still)requestAnimationFrame(frame);
+  }
+  hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+  hero.addEventListener('pointerleave',function(){mx=my=-999});
+  window.addEventListener('resize',function(){size();if(still)frame()});
+  colors();size();frame();
+})();
+</script>
+</body>
+</html>
